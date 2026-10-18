@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Editor - Rancang Rumah</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+ <div id="stage">
+  <canvas id="cv"></canvas>
+  <div id="bar"><button id="vp">Perspektif</button><button id="vt">Atas</button><button id="vi">Dalam ruangan</button>
+   <button id="f1">Lantai 1</button><button id="f2">Lantai 2</button><button id="f3">Lantai 1+2</button><button id="png">Simpan gambar</button>
+   <label><input type="checkbox" id="lb" checked> Label</label></div>
+  <div id="hint">Seret: putar. Roda mouse atau cubit: zoom. Shift + seret: geser. Klik ruangan: pilih.</div>
+ </div>
+ <aside id="panel">
+  <a href="index.html">← Beranda</a>
+  <label class="f" style="margin-top:8px">Nama desain<input type="text" id="pn" maxlength="60"></label>
+  <div class="row" style="margin-top:8px"><button id="sv" class="pri">Simpan</button><button id="lk">Salin tautan</button><button id="ex2">Unduh file</button></div>
+  <div id="status"></div>
+
+  <h2>Lahan dan bangunan</h2>
+  <div class="g2">
+   <label class="f">Lebar lahan (m)<input type="number" id="lw" step="0.5" min="3"></label>
+   <label class="f">Panjang lahan (m)<input type="number" id="ld" step="0.5" min="3"></label>
+   <label class="f">Tinggi dinding (m)<input type="number" id="lh" step="0.1" min="2.4" max="6"></label>
+   <label class="f">Warna dinding<input type="color" id="lc"></label>
+  </div>
+
+  <h2>Ruangan</h2>
+  <div id="chips" class="row"></div>
+  <div class="row" style="margin-top:8px"><button id="add">Tambah ruangan</button></div>
+  <div id="ed" style="margin-top:12px">
+   <label class="f">Nama<input type="text" id="en" maxlength="40"></label>
+   <div class="g2" style="margin-top:8px">
+    <label class="f">Posisi dari kiri (m)<input type="number" id="ex" step="0.1"></label>
+    <label class="f">Posisi dari depan (m)<input type="number" id="ez" step="0.1"></label>
+    <label class="f">Lebar (m)<input type="number" id="ew" step="0.1" min="0.5"></label>
+    <label class="f">Panjang (m)<input type="number" id="edp" step="0.1" min="0.5"></label>
+    <label class="f">Pintu di sisi<select id="edr"><option value="-">Tidak ada</option><option value="N">Depan</option><option value="S">Belakang</option><option value="W">Kiri</option><option value="E">Kanan</option></select></label>
+    <label class="f">Jendela di sisi<select id="ewn"><option value="-">Tidak ada</option><option value="N">Depan</option><option value="S">Belakang</option><option value="W">Kiri</option><option value="E">Kanan</option></select></label>
+   </div>
+   <label class="f" style="margin-top:8px">Berada di lantai<select id="erf"><option value="0">Lantai 1</option><option value="1">Lantai 2</option></select></label>
+   <label class="f" style="margin-top:8px">Warna lantai<input type="color" id="efl"></label>
+   <div class="row" style="margin-top:8px"><button id="del" class="danger">Hapus ruangan ini</button></div>
+  </div>
+  <h2>Perabot</h2>
+  <div class="row"><select id="ai" style="width:auto;flex:1"></select><button id="addi">Tambah</button></div>
+  <div id="ichips" class="row" style="margin-top:8px"></div>
+  <div id="ei" style="margin-top:12px">
+   <div class="g2"><label class="f">Posisi dari kiri (m)<input type="number" id="ix" step="0.1"></label>
+   <label class="f">Posisi dari depan (m)<input type="number" id="iz" step="0.1"></label>
+   <label class="f">Lantai<select id="if"><option value="0">Lantai 1</option><option value="1">Lantai 2</option></select></label>
+   <label class="f">Warna<input type="color" id="ic"></label></div>
+   <div class="row" style="margin-top:8px"><button id="irot">Putar 90°</button><button id="idel" class="danger">Hapus</button></div>
+  </div>
+  <p class="mut">Klik benda atau ruangan dulu, lalu seret untuk memindahkan.</p>
+  <div id="info"></div>
+ </aside>
+</div>
+<script src="lib/three.min.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/scene.js"></script>
+<script src="js/editor.js"></script>
+</body>
+</html>

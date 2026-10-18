@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rancang Rumah</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body style="height:auto">
+<main class="home">
+ <svg viewBox="0 0 96 80" fill="none" stroke="#0f6b6b" stroke-width="3" stroke-linejoin="round" aria-hidden="true">
+  <path d="M8 40 48 14l40 26v34H8z"/><path d="M48 14v60M8 40l40 24 40-24"/><path d="M62 52v14"/>
+ </svg>
+ <h1>Rancang Rumah</h1>
+ <p class="lead">Atur denah, lihat rumah Anda dalam 3D, dan bagikan desainnya lewat tautan. Gratis, tanpa akun. Desain tersimpan di perangkat Anda sendiri.</p>
+ <div class="acts">
+  <button id="cont" class="big pri">Lanjutkan desain<small id="contS"></small></button>
+  <button id="new" class="big">Desain baru<small>Jawab beberapa pertanyaan, denah awal dibuatkan</small></button>
+  <button id="open" class="big">Buka file desain<small>File .json yang pernah diunduh</small></button>
+ </div>
+ <input type="file" id="fi" accept=".json,application/json" hidden>
+ <h2 id="lh" hidden>Desain tersimpan</h2>
+ <div id="list"></div>
+</main>
+<dialog id="dlg">
+ <h3>Desain baru</h3>
+ <label class="f">Nama desain<input type="text" id="nn" placeholder="Rumah saya" maxlength="60"></label>
+ <div class="g2" style="margin-top:8px">
+  <label class="f">Lebar lahan (m)<input type="number" id="nw" value="10" min="5" step="0.5"></label>
+  <label class="f">Panjang lahan (m)<input type="number" id="nd" value="15" min="6" step="0.5"></label>
+  <label class="f">Jumlah lantai<select id="nl"><option value="1" selected>1 lantai</option><option value="2">2 lantai</option></select></label><label class="f">Ukuran ruangan<select id="nu"><option value="hemat">Hemat</option><option value="standar" selected>Standar</option><option value="luas">Luas</option></select></label><label class="f">Kamar tidur<select id="nk"><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select></label><label class="f">Kamar mandi<select id="nm"><option value="1">1</option><option value="2" selected>2</option><option value="3">3</option><option value="4">4</option></select></label><label class="f">Carport<select id="nc"><option value="0">Tidak ada</option><option value="1" selected>1 mobil</option><option value="2">2 mobil</option></select></label><label class="f">Dapur<select id="nkd"><option value="tertutup" selected>Tertutup</option><option value="terbuka">Terbuka (menyatu dengan ruang makan)</option></select></label>
+ </div>
+ <div class="mut" style="margin:10px 0 4px">Ruangan lain</div>
+ <div class="g2"><label class="ck"><input type="checkbox" id="c_teras" checked> Teras</label><label class="ck"><input type="checkbox" id="c_tamu" checked> Ruang tamu</label><label class="ck"><input type="checkbox" id="c_kel" checked> Ruang keluarga</label><label class="ck"><input type="checkbox" id="c_makan" checked> Ruang makan</label><label class="ck"><input type="checkbox" id="c_dapur" checked> Dapur</label><label class="ck"><input type="checkbox" id="c_kerja"> Ruang kerja</label><label class="ck"><input type="checkbox" id="c_musala"> Musala</label><label class="ck"><input type="checkbox" id="c_gudang"> Gudang</label><label class="ck"><input type="checkbox" id="c_cuci"> Area cuci dan jemur</label><label class="ck"><input type="checkbox" id="c_balkon"> Balkon (lantai 2)</label></div>
+ <label class="ck" style="margin-top:8px"><input type="checkbox" id="c_furn" checked> Isi perabot dasar otomatis</label>
+ <label class="f" style="margin-top:8px">Mulai dari<select id="ns"><option value="jawaban">Sesuai jawaban di atas</option><option value="kosong">Lahan kosong</option></select></label>
+ <p class="mut" style="margin:10px 0 0">Hasilnya draf awal. Semua ruangan dan perabot bisa digeser dan diubah di editor.</p>
+ <div class="row" style="margin-top:12px;justify-content:flex-end"><button id="cancel">Batal</button><button id="ok" class="pri">Buat desain</button></div>
+</dialog>
+<script src="js/storage.js"></script>
+<script src="js/template.js"></script>
+<script src="js/home.js"></script>
+</body>
+</html>
